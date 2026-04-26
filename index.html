@@ -1,193 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verdant | Minimalist Plant Shop</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary-green: #2d5a27;
-            --soft-green: #e8f5e9;
-            --accent: #c5e1a5;
-            --text-dark: #333;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STUDIO VERDE</title>
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-            color: var(--text-dark);
-            min-height: 100vh;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@200;400;500&display=swap" rel="stylesheet">
 
-        header {
-            padding: 60px 20px;
-            text-align: center;
-        }
+<style>
+:root {
+    --bg: #f5f2ed;
+    --line: #222;
+    --text: #1a1a1a;
+}
 
-        h1 {
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: var(--primary-green);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .subtitle {
-            font-weight: 300;
-            color: #777;
-            margin-bottom: 40px;
-        }
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Montserrat', sans-serif;
+    padding: 4vw;
+}
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            padding: 0 40px 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+/* NAV */
+nav {
+    position: fixed;
+    top: 4vw;
+    left: 4vw;
+}
 
-        .plant-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
+nav p {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+    opacity: 0.6;
+}
 
-        .plant-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            background: #fff;
-        }
+/* HEADER */
+header {
+    margin-bottom: 18vh;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 20px;
+}
 
-        .image-container {
-            width: 100%;
-            height: 200px;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
+h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 12vw, 10rem);
+    font-weight: 300;
+    line-height: 0.8;
+}
 
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+}
 
-        .plant-card:hover img {
-            transform: scale(1.1);
-        }
+.item {
+    grid-column: span 6;
+    margin-bottom: 12vh;
+}
 
-        h3 {
-            margin: 10px 0;
-            color: var(--primary-green);
-        }
+.item:nth-child(even) {
+    grid-column: 8 / span 4;
+    margin-top: 20vh;
+}
 
-        .price {
-            font-weight: 600;
-            color: #555;
-            display: block;
-            margin-bottom: 15px;
-        }
+.item:nth-child(odd) {
+    grid-column: 2 / span 5;
+}
 
-        .buy-btn {
-            background: var(--primary-green);
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 400;
-            transition: background 0.3s ease, letter-spacing 0.3s ease;
-        }
+/* IMAGE */
+.img-box {
+    overflow: hidden;
+    background: #e0e0e0;
+}
 
-        .buy-btn:hover {
-            background: #1e3d1a;
-            letter-spacing: 1px;
-        }
+.img-box img {
+    width: 100%;
+    display: block;
+    transition: 0.6s;
+}
 
-        /* Responsive spacing */
-        @media (max-width: 600px) {
-            .container { padding: 20px; }
-        }
-    </style>
+.item:hover img {
+    transform: scale(1.08);
+}
+
+/* DETAILS */
+.details {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 10px;
+}
+
+.details h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 2rem;
+}
+
+.details span {
+    font-size: 0.8rem;
+}
+
+/* BUTTON */
+button {
+    margin-top: 15px;
+    background: none;
+    border: 1px solid var(--line);
+    padding: 10px 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--line);
+    color: var(--bg);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .item,
+    .item:nth-child(even),
+    .item:nth-child(odd) {
+        grid-column: 1 / -1;
+        margin-top: 0;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+}
+</style>
 </head>
+
 <body>
 
+<nav><p>Collection — 2026</p></nav>
+
 <header>
-    <h1>Verdant</h1>
-    <p class="subtitle">Curated botanical wonders for your home.</p>
+    <h1>STUDIO<br>VERDE</h1>
 </header>
 
-<div class="container">
-    <div class="plant-card">
-        <div class="image-container">
-            <img src="https://images.unsplash.com/photo-1509309871545-a9429556a997" alt="Cactus">
-        </div>
-        <h3>Desert Gem</h3>
-        <span class="price">$18.00</span>
-        <button class="buy-btn" onclick="buyPlant('Desert Gem')">Add to Cart</button>
-    </div>
+<div class="grid">
 
-    <div class="plant-card">
-        <div class="image-container">
-            <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946" alt="Flower">
-        </div>
-        <h3>Wild Bloom</h3>
-        <span class="price">$24.00</span>
-        <button class="buy-btn" onclick="buyPlant('Wild Bloom')">Add to Cart</button>
+<div class="item">
+    <div class="img-box">
+        <img src="https://images.unsplash.com/photo-1509309871545-a9429556a997">
     </div>
+    <div class="details">
+        <h2>The Cereus</h2>
+        <span>01</span>
+    </div>
+    <button onclick="buy('Cereus')">Acquire</button>
+</div>
 
-    <div class="plant-card">
-        <div class="image-container">
-            <img src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b" alt="Money Plant">
-        </div>
-        <h3>Pothos Marble</h3>
-        <span class="price">$15.00</span>
-        <button class="buy-btn" onclick="buyPlant('Pothos Marble')">Add to Cart</button>
+<div class="item">
+    <div class="img-box">
+        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946">
     </div>
+    <div class="details">
+        <h2>Wild Bloom</h2>
+        <span>02</span>
+    </div>
+    <button onclick="buy('Wild Bloom')">Acquire</button>
+</div>
 
-    <div class="plant-card">
-        <div class="image-container">
-            <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7" alt="Rose">
-        </div>
-        <h3>Velvet Rose</h3>
-        <span class="price">$32.00</span>
-        <button class="buy-btn" onclick="buyPlant('Velvet Rose')">Add to Cart</button>
+<div class="item">
+    <div class="img-box">
+        <img src="https://images.unsplash.com/photo-1545239351-ef35f43d514b">
     </div>
+    <div class="details">
+        <h2>Monstera</h2>
+        <span>03</span>
+    </div>
+    <button onclick="buy('Monstera')">Acquire</button>
+</div>
 
-    <div class="plant-card">
-        <div class="image-container">
-            <img src="https://images.unsplash.com/photo-1470509037663-253afd7f0f51" alt="Sunflower">
-        </div>
-        <h3>Solstice Petal</h3>
-        <span class="price">$12.00</span>
-        <button class="buy-btn" onclick="buyPlant('Solstice Petal')">Add to Cart</button>
+<div class="item">
+    <div class="img-box">
+        <img src="https://images.unsplash.com/photo-1525498122312-07a8f0b215a1">
     </div>
+    <div class="details">
+        <h2>Medicinal</h2>
+        <span>04</span>
+    </div>
+    <button onclick="buy('Aloe')">Acquire</button>
+</div>
 
-    <div class="plant-card">
-        <div class="image-container">
-            <img src="https://images.unsplash.com/photo-1596547609652-9cf5d8d76921" alt="Aloe Vera">
-        </div>
-        <h3>Healing Aloe</h3>
-        <span class="price">$20.00</span>
-        <button class="buy-btn" onclick="buyPlant('Healing Aloe')">Add to Cart</button>
-    </div>
 </div>
 
 <script>
-function buyPlant(name) {
-    alert("✨ " + name + " has been added to your collection!");
+function buy(name) {
+    alert(name + " added to your collection 🌿");
 }
 </script>
 
