@@ -1,209 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>STUDIO VERDE</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@200;400;500&display=swap" rel="stylesheet">
+<title>Plant Shop</title>
 
 <style>
-:root {
-    --bg: #f5f2ed;
-    --line: #222;
-    --text: #1a1a1a;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Montserrat', sans-serif;
-    padding: 4vw;
+    font-family: Arial;
+    text-align: center;
+    background: #f5f2ed;
 }
 
-/* NAV */
-nav {
-    position: fixed;
-    top: 4vw;
-    left: 4vw;
+/* Hide shop initially */
+#shop {
+    display: none;
 }
 
-nav p {
-    font-size: 0.7rem;
-    letter-spacing: 3px;
-    writing-mode: vertical-rl;
-    text-transform: uppercase;
-    opacity: 0.6;
-}
-
-/* HEADER */
-header {
-    margin-bottom: 18vh;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 20px;
-}
-
-h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 12vw, 10rem);
-    font-weight: 300;
-    line-height: 0.8;
-}
-
-/* GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 20px;
-}
-
-.item {
-    grid-column: span 6;
-    margin-bottom: 12vh;
-}
-
-.item:nth-child(even) {
-    grid-column: 8 / span 4;
-    margin-top: 20vh;
-}
-
-.item:nth-child(odd) {
-    grid-column: 2 / span 5;
-}
-
-/* IMAGE */
-.img-box {
-    overflow: hidden;
-    background: #e0e0e0;
-}
-
-.img-box img {
-    width: 100%;
-    display: block;
-    transition: 0.6s;
-}
-
-.item:hover img {
-    transform: scale(1.08);
-}
-
-/* DETAILS */
-.details {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid rgba(0,0,0,0.1);
-    padding-top: 10px;
-}
-
-.details h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    font-size: 2rem;
-}
-
-.details span {
-    font-size: 0.8rem;
-}
-
-/* BUTTON */
 button {
-    margin-top: 15px;
+    margin: 10px;
+    padding: 10px 20px;
+    border: 1px solid black;
     background: none;
-    border: 1px solid var(--line);
-    padding: 10px 25px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.6rem;
-    letter-spacing: 2px;
     cursor: pointer;
 }
 
 button:hover {
-    background: var(--line);
-    color: var(--bg);
+    background: black;
+    color: white;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-    .item,
-    .item:nth-child(even),
-    .item:nth-child(odd) {
-        grid-column: 1 / -1;
-        margin-top: 0;
-    }
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
 
-    h1 {
-        font-size: 4rem;
-    }
+.plant {
+    border: 1px solid green;
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
 }
 </style>
 </head>
 
 <body>
 
-<nav><p>Collection — 2026</p></nav>
-
-<header>
-    <h1>STUDIO<br>VERDE</h1>
-</header>
-
-<div class="grid">
-
-<div class="item">
-    <div class="img-box">
-        <img src="https://images.unsplash.com/photo-1509309871545-a9429556a997">
-    </div>
-    <div class="details">
-        <h2>The Cereus</h2>
-        <span>01</span>
-    </div>
-    <button onclick="buy('Cereus')">Acquire</button>
+<!-- PAGE 1 -->
+<div id="home">
+    <h1>🌿 Welcome to Studio Verde</h1>
+    <button onclick="enterShop()">Enter Shop</button>
 </div>
 
-<div class="item">
-    <div class="img-box">
-        <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946">
-    </div>
-    <div class="details">
-        <h2>Wild Bloom</h2>
-        <span>02</span>
-    </div>
-    <button onclick="buy('Wild Bloom')">Acquire</button>
-</div>
+<!-- PAGE 2 -->
+<div id="shop">
+    <h1>🌱 Choose Your Plant</h1>
 
-<div class="item">
-    <div class="img-box">
-        <img src="https://images.unsplash.com/photo-1545239351-ef35f43d514b">
-    </div>
-    <div class="details">
-        <h2>Monstera</h2>
-        <span>03</span>
-    </div>
-    <button onclick="buy('Monstera')">Acquire</button>
-</div>
+    <button onclick="goBack()">⬅ Back</button>
 
-<div class="item">
-    <div class="img-box">
-        <img src="https://images.unsplash.com/photo-1525498122312-07a8f0b215a1">
+    <div class="grid">
+        <div class="plant">🌵 Cactus <button onclick="buy('Cactus')">Buy</button></div>
+        <div class="plant">🌸 Rose <button onclick="buy('Rose')">Buy</button></div>
+        <div class="plant">🌻 Sunflower <button onclick="buy('Sunflower')">Buy</button></div>
+        <div class="plant">🍃 Money Plant <button onclick="buy('Money Plant')">Buy</button></div>
+        <div class="plant">🌿 Aloe Vera <button onclick="buy('Aloe Vera')">Buy</button></div>
+        <div class="plant">🌼 Daisy <button onclick="buy('Daisy')">Buy</button></div>
+        <div class="plant">🌺 Hibiscus <button onclick="buy('Hibiscus')">Buy</button></div>
+        <div class="plant">🌳 Bonsai <button onclick="buy('Bonsai')">Buy</button></div>
+        <div class="plant">🍀 Clover <button onclick="buy('Clover')">Buy</button></div>
+        <div class="plant">🌷 Tulip <button onclick="buy('Tulip')">Buy</button></div>
     </div>
-    <div class="details">
-        <h2>Medicinal</h2>
-        <span>04</span>
-    </div>
-    <button onclick="buy('Aloe')">Acquire</button>
-</div>
-
 </div>
 
 <script>
-function buy(name) {
-    alert(name + " added to your collection 🌿");
+function enterShop() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("shop").style.display = "block";
+}
+
+function goBack() {
+    document.getElementById("shop").style.display = "none";
+    document.getElementById("home").style.display = "block";
+}
+
+function buy(name){
+    alert(name + " added 🌿");
 }
 </script>
 
