@@ -1,95 +1,193 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>My Plant Shop 🌿</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verdant | Minimalist Plant Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --primary-green: #2d5a27;
+            --soft-green: #e8f5e9;
+            --accent: #c5e1a5;
+            --text-dark: #333;
+        }
+
         body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 60px 20px;
             text-align: center;
-            font-family: Arial;
-            background: linear-gradient(to right, #d4fc79, #96e6a1);
         }
 
         h1 {
-            color: green;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+            text-transform: uppercase;
         }
 
-        .plant {
-            border: 2px solid green;
-            margin: 20px;
-            padding: 10px;
-            display: inline-block;
-            border-radius: 10px;
-            background: white;
+        .subtitle {
+            font-weight: 300;
+            color: #777;
+            margin-bottom: 40px;
         }
 
-        .plant:hover {
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 0 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .plant-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .plant-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: #fff;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .plant-card:hover img {
             transform: scale(1.1);
-            transition: 0.3s;
         }
 
-        button {
-            background: green;
+        h3 {
+            margin: 10px 0;
+            color: var(--primary-green);
+        }
+
+        .price {
+            font-weight: 600;
+            color: #555;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .buy-btn {
+            background: var(--primary-green);
             color: white;
-            padding: 5px 10px;
             border: none;
-            border-radius: 5px;
+            padding: 12px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            transition: background 0.3s ease, letter-spacing 0.3s ease;
+        }
+
+        .buy-btn:hover {
+            background: #1e3d1a;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive spacing */
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
         }
     </style>
 </head>
-
 <body>
 
-<h1>🌱 My Plant Shop 🌱</h1>
-<p>Welcome! Choose your favorite plant 🌸</p>
+<header>
+    <h1>Verdant</h1>
+    <p class="subtitle">Curated botanical wonders for your home.</p>
+</header>
 
-<div class="plant">
-    <h3>🌵 Cactus</h3>
-    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6" width="100">
-    <p>Easy to care</p>
-    <button onclick="buyPlant('Cactus')">Buy</button>
-</div>
+<div class="container">
+    <div class="plant-card">
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1509309871545-a9429556a997" alt="Cactus">
+        </div>
+        <h3>Desert Gem</h3>
+        <span class="price">$18.00</span>
+        <button class="buy-btn" onclick="buyPlant('Desert Gem')">Add to Cart</button>
+    </div>
 
-<div class="plant">
-    <h3>🌸 Flower</h3>
-    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946" width="100">
-    <p>Very beautiful</p>
-    <button onclick="buyPlant('Flower')">Buy</button>
-</div>
+    <div class="plant-card">
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946" alt="Flower">
+        </div>
+        <h3>Wild Bloom</h3>
+        <span class="price">$24.00</span>
+        <button class="buy-btn" onclick="buyPlant('Wild Bloom')">Add to Cart</button>
+    </div>
 
-<div class="plant">
-    <h3>🍃 Money Plant</h3>
-    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6" width="100">
-    <p>Good luck plant</p>
-    <button onclick="buyPlant('Money Plant')">Buy</button>
-</div>
+    <div class="plant-card">
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1614594975525-e45190c55d0b" alt="Money Plant">
+        </div>
+        <h3>Pothos Marble</h3>
+        <span class="price">$15.00</span>
+        <button class="buy-btn" onclick="buyPlant('Pothos Marble')">Add to Cart</button>
+    </div>
 
-<!-- ✅ NEW PLANTS HERE -->
-<div class="plant">
-    <h3>🌹 Rose</h3>
-    <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7" width="100">
-    <p>Beautiful and romantic</p>
-    <button onclick="buyPlant('Rose')">Buy</button>
-</div>
+    <div class="plant-card">
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7" alt="Rose">
+        </div>
+        <h3>Velvet Rose</h3>
+        <span class="price">$32.00</span>
+        <button class="buy-btn" onclick="buyPlant('Velvet Rose')">Add to Cart</button>
+    </div>
 
-<div class="plant">
-    <h3>🌻 Sunflower</h3>
-    <img src="https://images.unsplash.com/photo-1470509037663-253afd7f0f51" width="100">
-    <p>Bright and happy</p>
-    <button onclick="buyPlant('Sunflower')">Buy</button>
-</div>
+    <div class="plant-card">
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1470509037663-253afd7f0f51" alt="Sunflower">
+        </div>
+        <h3>Solstice Petal</h3>
+        <span class="price">$12.00</span>
+        <button class="buy-btn" onclick="buyPlant('Solstice Petal')">Add to Cart</button>
+    </div>
 
-<div class="plant">
-    <h3>🌿 Aloe Vera</h3>
-    <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6" width="100">
-    <p>Good for skin care</p>
-    <button onclick="buyPlant('Aloe Vera')">Buy</button>
+    <div class="plant-card">
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1596547609652-9cf5d8d76921" alt="Aloe Vera">
+        </div>
+        <h3>Healing Aloe</h3>
+        <span class="price">$20.00</span>
+        <button class="buy-btn" onclick="buyPlant('Healing Aloe')">Add to Cart</button>
+    </div>
 </div>
 
 <script>
 function buyPlant(name) {
-    alert("You bought a " + name + " 🌿");
+    alert("✨ " + name + " has been added to your collection!");
 }
 </script>
 
